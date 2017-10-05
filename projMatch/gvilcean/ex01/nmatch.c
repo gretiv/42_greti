@@ -1,0 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   nmatch.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gvilcean <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/09/24 20:42:03 by gvilcean          #+#    #+#             */
+/*   Updated: 2017/09/24 21:02:50 by gvilcean         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strlen(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+int	ft_rnmatch(char *s1, char *s2, int i, int j)
+{
+	if (i == ft_strlen(s1) && j == ft_strlen(s2))
+		return (1);
+	if (ft_strlen(s1) < i && ft_strlen(s2) < j)
+		return (0);
+	if (s1[i] == s2[j] && s2[j] != '*')
+		return (ft_rnmatch(s1, s2, i + 1, j + 1));
+	if (s2[j] == '*' && s1[i] == 0)
+		return (ft_rnmatch(s1, s2, i, j + 1));
+	if (s2[j] == '*' && s1[i] != 0)
+		return (ft_rnmatch(s1, s2, i + 1, j) + ft_rnmatch(s1, s2, i, j + 1));
+	return (0);
+}
+
+int	nmatch(char *s1, char *s2)
+{
+	return (ft_rnmatch(s1, s2, 0, 0));
+}

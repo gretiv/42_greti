@@ -1,0 +1,6 @@
+Credentials cache: API:27602
+        Principal: gvilcean@42.FR
+
+  Issued                Expires               Principal
+Sep 11 21:28:22 2017  Sep 12 07:28:22 2017  krbtgt/42.FR@42.FR
+Sep 11 22:45:49 2017  Sep 12 07:28:22 2017  ldap/ldap-proxy.42.fr@42.FR
